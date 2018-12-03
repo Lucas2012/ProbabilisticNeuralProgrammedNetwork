@@ -1,0 +1,6 @@
+[submodule "data/CLEVR/clevr-dataset-gen"]
+	path = data/CLEVR/clevr-dataset-gen
+	url = git@github.com:woodfrog/clevr-dataset-gen.git
+[submodule "SemanticCorrectnessScore"]
+	path = SemanticCorrectnessScore
+	url = git@github.com:woodfrog/SemanticCorrectnessScore.git
