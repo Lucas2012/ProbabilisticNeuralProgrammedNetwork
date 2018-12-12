@@ -42,7 +42,7 @@ For running our measurement (a semantic correctness score based on detector), ch
 
 We used the released code of [CLEVR (Johnson et al.)](https://arxiv.org/pdf/1612.06890.pdf) to generate a modified CLEVR dataset for the task of scene image generation, and we call it CLEVR-G. The generation code is in the [submodule](https://github.com/woodfrog/clevr-dataset-gen/tree/42a5c4914bbae49a0cd36cf96607c05111394ddc). 
 
-We also provide the [link]() of our generated dataset used in our experiments. Please download and zip it into **./data/CLEVR** if you want to use it with our model.
+We also provide the [link](https://drive.google.com/open?id=1RfMG1IXk_6Omv_EitYElKIzzZLjejKQE) of our generated dataset used in our experiments. Please download and zip it into **./data/CLEVR** if you want to use it with our model.
 
 
 
