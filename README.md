@@ -34,7 +34,7 @@ All code was tested on Ubuntu 16.04 with Python 2.7 and **PyTorch 0.4.0**. To in
 pip install -r requirements.txt   
 ```
 
-For running our measurement (a semantic correctness score based on detector), check [this submodule](https://github.com/woodfrog/SemanticCorrectnessScore/tree/7bb1c4e6b4cd9d2848a6e2fab7d2383ee4365aea).
+For running our measurement (a semantic correctness score based on detector), check [this submodule](https://github.com/woodfrog/SemanticCorrectnessScore/tree/483c6ef2e0548fcc629059b84c489cd4e0c19f86) for full details (**it's released now**).
 
 ## Data
 
