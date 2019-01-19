@@ -88,36 +88,54 @@ We use [global configuration files](configs/pnp_net_configs.yaml) to set up all 
 
 The core of PNP-Net is a set of **neural modular operators**. We briefly introduce them here and provide the pointers to corresponding code.
 
-- **Concept Mapping**
+
+**Concept Mapping**
+
+
 <div align='center'>
   <img src='images/mapping.png' width='256px'>
 </div>
-	Convert one-hot representation of word concepts into appearance and scale distribution. [code](lib/modules/ConceptMapper.py)
+
+
+Convert one-hot representation of word concepts into appearance and scale distribution. 
+[code](lib/modules/ConceptMapper.py)
 	
-- **Combine Operator**
+**Combine Operator**
+
 <div align='center'>
   <img src='images/combine.png' width='256px'>
 </div>
-	Combine module combines the latent distributions of two attributes. [code](lib/modules/Combine.py)
-	
-- **Describe Operator**
+
+
+Combine module combines the latent distributions of two attributes. [code](lib/modules/Combine.py)
+
+
+**Describe Operator**
+
 <div align='center'>
   <img src='images/describe.png' width='256px'>
 </div>
-	Attributes describe an object, this module takes the distributions of attributes (merged using combine module) and uses it to render the distributions of an object. [code](lib/modules/Describe.py)
+
+Attributes describe an object, this module takes the distributions of attributes (merged using combine module) and uses it to render the distributions of an object. [code](lib/modules/Describe.py)
 	
 	
-- **Transform Operator**
+**Transform Operator**
+
 <div align='center'>
   <img src='images/transform.png' width='256px'>
 </div>
-	This module first samples a size instance from an object's scale distribution and then use bilinear interpolation to re-size the appearance distribution. [code](lib/modules/Transform.py)
 	
-- **Layout Distribution**
+This module first samples a size instance from an object's scale distribution and then use bilinear interpolation to re-size the appearance distribution. [code](lib/modules/Transform.py)
+	
+
+**Layout Distribution**
+
 <div align='center'> 
   <img src='images/layout.png' width='256px'>
 </div> 
-	Layout module puts latent distributions of two different objects (from its children nodes) on a background latent canvas according to the offsets of the two children objects. [code](models/PNPNet/pnp_net.py#L267)
+
+
+Layout module puts latent distributions of two different objects (from its children nodes) on a background latent canvas according to the offsets of the two children objects. [code](models/PNPNet/pnp_net.py#L267)
 
 
 
