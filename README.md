@@ -6,7 +6,10 @@ This is the official implementation for paper:
 
 [Zhiwei Deng](http://www.sfu.ca/~zhiweid/), [Jiacheng Chen](http://jcchen.me/), [Yifang Fu](https://yifangfu.wordpress.com/) and [Greg Mori](http://www2.cs.sfu.ca/~mori/)
 
+
 Published on NeurIPS 2018
+
+[Poster](http://www.sfu.ca/~zhiweid/papers/PNP_Net_Poster.pdf)
 
 If you find this code helpful in your research, please cite
 
@@ -33,7 +36,7 @@ If you find this code helpful in your research, please cite
 
 ##Overview
 
-Generating scenes from rich and complex semantics is an important step towards understanding the visual world. Probabilistic Neural Programmed Network (PNP-Net) brings symbolic methods into generative models, it exploits a set of reusable neural modules to compose latent distributions for scenes described by complex semantics in a programmatic manner, a decoder can then sample from latent scene distributions and generate realistic images. PNP-Net is naturally formulated as a learnable prior in canonical VAE framework to learn the parameters efficiently.
+Generating scenes from rich and complex semantics is an important step towards understanding the visual world. Probabilistic Neural Programmed Network (PNP-Net) brings symbolic methods into generative models, it exploits a set of **reusable neural modules** to compose latent distributions for scenes described by complex semantics in a **programmatic** manner, a decoder can then sample from latent scene distributions and generate realistic images. PNP-Net is naturally formulated as a learnable prior in canonical VAE framework to learn the parameters efficiently.
 
 
 
@@ -83,7 +86,40 @@ We use [global configuration files](configs/pnp_net_configs.yaml) to set up all 
 
 ### Neural Operators
 
-The core of PNP-Net is a set of neural modular operators, check their implementations [here](lib/modules). More details will be coming soon.
+The core of PNP-Net is a set of **neural modular operators**. We briefly introduce them here and provide the pointers to corresponding code.
+
+- **Concept Mapping**
+<div align='center'>
+  <img src='images/mapping.png' width='256px'>
+</div>
+	Convert one-hot representation of word concepts into appearance and scale distribution. [code](lib/modules/ConceptMapper.py)
+	
+- **Combine Operator**
+<div align='center'>
+  <img src='images/combine.png' width='256px'>
+</div>
+	Combine module combines the latent distributions of two attributes. [code](lib/modules/Combine.py)
+	
+- **Describe Operator**
+<div align='center'>
+  <img src='images/describe.png' width='256px'>
+</div>
+	Attributes describe an object, this module takes the distributions of attributes (merged using combine module) and uses it to render the distributions of an object. [code](lib/modules/Describe.py)
+	
+	
+- **Transform Operator**
+<div align='center'>
+  <img src='images/transform.png' width='256px'>
+</div>
+	This module first samples a size instance from an object's scale distribution and then use bilinear interpolation to re-size the appearance distribution. [code](lib/modules/Transform.py)
+	
+- **Layout Distribution**
+<div align='center'> 
+  <img src='images/layout.png' width='256px'>
+</div> 
+	Layout module puts latent distributions of two different objects (from its children nodes) on a background latent canvas according to the offsets of the two children objects. [code](models/PNPNet/pnp_net.py#L267)
+
+
 
 ## Training
 
