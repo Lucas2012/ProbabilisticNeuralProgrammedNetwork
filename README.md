@@ -8,13 +8,6 @@ This is the official implementation for paper:
 
 Published on NeurIPS 2018
 
-
-
-<div align='center'>
-  <img src='images/pipeline.png' width='512px'>
-</div>
-
-
 If you find this code helpful in your research, please cite
 
 ```
@@ -26,9 +19,33 @@ If you find this code helpful in your research, please cite
 }
 ```
 
-## Installation
+## Contents
+1. [Overview](#overview)
+2. [Environment Setup](#environment)
+3. [Data and Pre-trained Models](#data-and-models)
+	- [CLEVR-G](#CLEVR-G)
+4. [Configurations](#configurations)
+5. [Code Guide](#code-guide)
+	- [Neural Operators](#neural-operators)
+5. [Training Model](#training)
+6. [Evaluation](#evaluation)
 
-All code was tested on Ubuntu 16.04 with Python 2.7 and **PyTorch 0.4.0**. To install required environment, run:
+
+##Overview
+
+Generating scenes from rich and complex semantics is an important step towards understanding the visual world. Probabilistic Neural Programmed Network (PNP-Net) brings symbolic methods into generative models, it exploits a set of reusable neural modules to compose latent distributions for scenes described by complex semantics in a programmatic manner, a decoder can then sample from latent scene distributions and generate realistic images. PNP-Net is naturally formulated as a learnable prior in canonical VAE framework to learn the parameters efficiently.
+
+
+
+<div align='center'>
+  <img src='images/pipeline.png' width='512px'>
+</div>
+
+
+
+## Environment
+
+All code was tested on Ubuntu 16.04 with Python 2.7 and **PyTorch 0.4.0** (but the code should also work well with Python 3). To install required environment, run:
 
 ```bash
 pip install -r requirements.txt   
@@ -36,27 +53,44 @@ pip install -r requirements.txt
 
 For running our measurement (a semantic correctness score based on detector), check [this submodule](https://github.com/woodfrog/SemanticCorrectnessScore/tree/483c6ef2e0548fcc629059b84c489cd4e0c19f86) for full details (**it's released now**).
 
-## Data
+## Data and Models
 
 ### CLEVR-G
 
 We used the released code of [CLEVR (Johnson et al.)](https://arxiv.org/pdf/1612.06890.pdf) to generate a modified CLEVR dataset for the task of scene image generation, and we call it CLEVR-G. The generation code is in the [submodule](https://github.com/woodfrog/clevr-dataset-gen/tree/42a5c4914bbae49a0cd36cf96607c05111394ddc). 
 
-We also provide the [link](https://drive.google.com/open?id=10yP0ki9EqxOacCL08mDQiDbVvUeO8m41) of our generated dataset used in our experiments. Please download and zip it into **./data/CLEVR** if you want to use it with our model.
+We also provide the [64x64 CLEVR-G](https://drive.google.com/open?id=10yP0ki9EqxOacCL08mDQiDbVvUeO8m41) used in our experiments. Please download and zip it into **./data/CLEVR** if you want to use it with our model.
+
+**Pre-trained Model**
+
+Please download pre-trained models from:
+
+- [PNP-Net CLEVR-G 64x64](https://drive.google.com/open?id=1VusqEqIHZibRqKbXyIxJDxBRTp9AZP0y)
+
+
+### COLOR-MNIST
+
+Coming soon...
 
 
 
 ## Configurations
 
-We use a [global configuration file](https://github.com/Lucas2012/mock-pnp-repo/blob/master/configs/pnp_net_configs.yaml) to set up all configs, including the training settings and model hyper-parameters. Please check the file and corresponding code for more detail.
+We use [global configuration files](configs/pnp_net_configs.yaml) to set up all configs, including the training settings and model hyper-parameters. Please check the file and corresponding code for more detail.
 
+
+## Code Guide
+
+### Neural Operators
+
+The core of PNP-Net is a set of neural modular operators, check their implementations [here](lib/modules). More details will be coming soon.
 
 ## Training
 
 The default training can be started by: 
 
 ```bash
-python mains/pnpnet_main.py configs/pnp_net_configs.yaml
+python mains/pnpnet_main.py --config_path configs/pnp_net_configs.yaml
 ```
 
 Make sure that you are in the project root directory when typing the above command. 
@@ -75,6 +109,5 @@ The evaluation has two major steps:
 For generating test images using pre-trained model, first set the code mode to be **test**, then set up the checkpoint path properly in the config file, finally run the same command as training:
 
 ```bash
-python mains/pnpnet_main.py configs/pnp_net_configs.yaml
+python mains/pnpnet_main.py --config_path configs/pnp_net_configs.yaml
 ```
-
