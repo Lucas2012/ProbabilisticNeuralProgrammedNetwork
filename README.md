@@ -14,11 +14,12 @@ Published on NeurIPS 2018
 If you find this code helpful in your research, please cite
 
 ```
-@inproceedings{DengCFM18,
-  author = {Zhiwei Deng and Jiacheng Chen and Yifang Fu and Greg Mori},
-  title = {Probabilistic Neural Programmed Networks for Scene Generation},
-  booktitle = {Advances in Neural Information Processing Systems (NIPS)},
-  year = {2018}
+@inproceedings{deng2018probabilistic,
+  title={Probabilistic Neural Programmed Networks for Scene Generation},
+  author={Deng, Zhiwei and Chen, Jiacheng and Fu, Yifang and Mori, Greg},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={4032--4042},
+  year={2018}
 }
 ```
 
