@@ -34,7 +34,7 @@ If you find this code helpful in your research, please cite
 6. [Evaluation](#evaluation)
 
 
-##Overview
+## Overview
 
 Generating scenes from rich and complex semantics is an important step towards understanding the visual world. Probabilistic Neural Programmed Network (PNP-Net) brings symbolic methods into generative models, it exploits a set of **reusable neural modules** to compose latent distributions for scenes described by complex semantics in a **programmatic** manner, a decoder can then sample from latent scene distributions and generate realistic images. PNP-Net is naturally formulated as a learnable prior in canonical VAE framework to learn the parameters efficiently.
 
@@ -139,7 +139,7 @@ The evaluation has two major steps:
 
 1. Generate images according to the semantics in the test set using pre-trained model. 
 
-2. Run our [detector-based semantic correctness](https://github.com/woodfrog/SemanticCorrectnessScore) score to evaluate the quality of images. Please check that repo for more details about our proposed metric for measuring semantic correctness of scene images.
+2. Run our [detector-based semantic correctness score](https://github.com/woodfrog/SemanticCorrectnessScore) to evaluate the quality of images. Please check that repo for more details about our proposed metric for measuring semantic correctness of scene images.
 
 
 For generating test images using pre-trained model, first set the code mode to be **test**, then set up the checkpoint path properly in the config file, finally run the same command as training:
