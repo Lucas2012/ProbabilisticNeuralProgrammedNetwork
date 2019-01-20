@@ -31,8 +31,9 @@ If you find this code helpful in your research, please cite
 4. [Configurations](#configurations)
 5. [Code Guide](#code-guide)
 	- [Neural Operators](#neural-operators)
-5. [Training Model](#training)
-6. [Evaluation](#evaluation)
+6. [Training Model](#training)
+7. [Evaluation](#evaluation)
+8. [Results](#results)
 
 
 ## Overview
@@ -90,7 +91,7 @@ We use [global configuration files](configs/pnp_net_configs.yaml) to set up all 
 The core of PNP-Net is a set of **neural modular operators**. We briefly introduce them here and provide the pointers to corresponding code.
 
 
-**Concept Mapping**
+- **Concept Mapping Operator**
 
 
 <div align='center'>
@@ -101,7 +102,7 @@ The core of PNP-Net is a set of **neural modular operators**. We briefly introdu
 Convert one-hot representation of word concepts into appearance and scale distribution. 
 [code](lib/modules/ConceptMapper.py)
 	
-**Combine Operator**
+- **Combine Operator**
 
 <div align='center'>
   <img src='images/combine.png' width='256px'>
@@ -111,7 +112,7 @@ Convert one-hot representation of word concepts into appearance and scale distri
 Combine module combines the latent distributions of two attributes. [code](lib/modules/Combine.py)
 
 
-**Describe Operator**
+- **Describe Operator**
 
 <div align='center'>
   <img src='images/describe.png' width='256px'>
@@ -120,7 +121,7 @@ Combine module combines the latent distributions of two attributes. [code](lib/m
 Attributes describe an object, this module takes the distributions of attributes (merged using combine module) and uses it to render the distributions of an object. [code](lib/modules/Describe.py)
 	
 	
-**Transform Operator**
+- **Transform Operator**
 
 <div align='center'>
   <img src='images/transform.png' width='256px'>
@@ -129,7 +130,7 @@ Attributes describe an object, this module takes the distributions of attributes
 This module first samples a size instance from an object's scale distribution and then use bilinear interpolation to re-size the appearance distribution. [code](lib/modules/Transform.py)
 	
 
-**Layout Distribution**
+- **Layout Operator**
 
 <div align='center'> 
   <img src='images/layout.png' width='256px'>
@@ -166,3 +167,19 @@ For generating test images using pre-trained model, first set the code mode to b
 ```bash
 python mains/pnpnet_main.py --config_path configs/pnp_net_configs.yaml
 ```
+
+
+## Results
+
+Detailed results can be checked in our paper. We provide some samples here to show PNP-Net's capability for generating images for different complex scenes. The dataset used here is CLEVR-G 128x128, every scene contains at most 8 objects.
+
+
+<div align='center'> 
+  <img src='images/samples.png' width='512px'>
+</div> 
+
+When the scene becomes too complex, PNP-Net can suffer from the following problems:
+
+1. It might fail to handle occlusion between objects. When multiple objects overlap, their latents get mixed on the background latent canvas, and the appearance of objects can be distorted.
+
+2. It might put some of the objects out of the image boundary, therefore some images do not contain the correct number of objects as described by the semantics.
