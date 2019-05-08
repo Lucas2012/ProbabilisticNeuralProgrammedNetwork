@@ -79,7 +79,7 @@ Please download pre-trained models from:
 
 ### COLOR-MNIST
 
-Coming soon...
+- [PNP-Net COLOR-MNIST 64x64](https://www.dropbox.com/s/jf5u7yosyisf8zd/MULTI_8000_64_100.tar?dl=0)
 
 
 
