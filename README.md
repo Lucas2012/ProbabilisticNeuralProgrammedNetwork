@@ -23,6 +23,10 @@ If you find this code helpful in your research, please cite
 }
 ```
 
+Other re-implementations:
+
+[Tensorflow version](https://github.com/mihirp1998/ProbabilisticNeuralProgrammedNetwork_Tensorflow)
+
 ## Contents
 1. [Overview](#overview)
 2. [Environment Setup](#environment)
